@@ -1,0 +1,4 @@
+create database c4;
+use c4;
+create table Players(Playername varcahr(30) not ,scorepoints int(20));
+desc Players; // this can be used to check for the field of the creation of the table
