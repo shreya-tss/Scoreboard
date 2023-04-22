@@ -1,0 +1,75 @@
+// THIS WAS MY TASK AFTER THE WINNING CONDITION WAS MET THE NAME OF THE PLAYER AND THE POINTS SCORED SHOULD BE UPDATED ON THE SCOREBOARD 
+//HERE IS THE SMALL SNIPPET OF THE CODE
+
+
+if r==0:
+                screen.textinput('Game over','tie')
+                
+            elif r==1:
+                
+                screen.textinput('Game over','player1 won')
+                end_time=time.time()
+                elapsed_time=end_time-start_time
+                print(elapsed_time)
+                player_name = name1
+                s='SELECT*FROM Player WHERE Playername=%s'
+                cursor.execute(s,(player_name,))
+                check_condition=cursor.fetchall()
+                print(check_condition)
+                if check_condition is not None:
+                   
+                        
+                        current_points=check_condition[0][1]
+                        print(current_points)
+                        
+                        res=current_points+10
+                        print(res)
+                        c=res
+                        sq="UPDATE Player  SET scorepoints=%s WHERE Playername=%s"
+                        va=(c,player_name)
+                        cursor.execute(sq,va)
+                        mydb.commit()
+                    
+                        
+                else:
+                    count=10 
+
+                    sql = "INSERT INTO  Player VALUES (%s),(%s)"
+                    val = ( player_name,count)
+                    cursor.execute(sql, val)
+
+                    mydb.commit()  
+                
+            elif r==-1:
+                screen.textinput('game over' ,'player 2 won')
+                end_time=time.time()
+                elapsed_time=end_time-start_time
+                player_name = name2
+                s='SELECT*FROM Player WHERE Playername=%s'
+                cursor.execute(s,(player_name,))
+                check_condition=cursor.fetchall()
+                print(check_condition)
+                if check_condition is not None:
+                   
+                        
+                        current_points=check_condition[0][1]
+                        print(current_points)
+                        
+                        res=current_points+10
+                        print(res)
+                        c=res
+                        sq="UPDATE Player  SET scorepoints=%s WHERE Playername=%s"
+                        va=(c,player_name)
+                        cursor.execute(sq,va)
+                        mydb.commit()
+                    
+                        
+                else:
+                    count=10 
+
+                    sql = "INSERT INTO  Player VALUES (%s),(%s)"
+                    val = ( player_name,count)
+                    cursor.execute(sql, val)
+
+                    mydb.commit()
+    
